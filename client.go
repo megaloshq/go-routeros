@@ -49,7 +49,7 @@ func Dial(address, username, password string) (*Client, error) {
 	return newClientAndLogin(conn, address, username, password)
 }
 
-// Dial connects and logs in to a RouterOS device.
+// DialTimeout connects and logs in to a RouterOS device.
 func DialTimeout(address, username, password string, timeout time.Duration) (*Client, error) {
 	conn, err := net.DialTimeout("tcp", address, timeout)
 	if err != nil {
