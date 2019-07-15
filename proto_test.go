@@ -5,8 +5,8 @@ import (
 	"io"
 	"testing"
 
-	"gopkg.in/routeros.v2"
-	"gopkg.in/routeros.v2/proto"
+	"github.com/megaloshq/go-routeros"
+	"github.com/megaloshq/go-routeros/proto"
 )
 
 func TestLogin(t *testing.T) {

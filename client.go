@@ -13,7 +13,7 @@ import (
 	"sync"
 	"time"
 
-	"gopkg.in/routeros.v2/proto"
+	"github.com/megaloshq/go-routeros/proto"
 )
 
 // Client is a RouterOS API client.

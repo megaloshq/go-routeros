@@ -4,7 +4,7 @@ import (
 	"bytes"
 	"fmt"
 
-	"gopkg.in/routeros.v2/proto"
+	"github.com/megaloshq/go-routeros/proto"
 )
 
 // Reply has all the sentences from a reply.
