@@ -7,7 +7,6 @@ import (
 	"crypto/md5"
 	"crypto/tls"
 	"encoding/hex"
-	"errors"
 	"fmt"
 	"io"
 	"net"
@@ -107,14 +106,17 @@ func (c *Client) Close() {
 
 // Login runs the /login command. Dial and DialTLS call this automatically.
 func (c *Client) Login(username, password string) error {
-	r, err := c.Run("/login")
+	r, err := c.Run("/login", "=name="+username, "=password="+password)
 	if err != nil {
 		return err
 	}
 	ret, ok := r.Done.Map["ret"]
 	if !ok {
-		return errors.New("RouterOS: /login: no ret (challenge) received")
+		// v6.43 login method successful
+		return nil
 	}
+
+	// fallback to pre v6.43 login method
 	b, err := hex.DecodeString(ret)
 	if err != nil {
 		return fmt.Errorf("RouterOS: /login: invalid ret (challenge) hex string received: %s", err)
